@@ -2,9 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io"
 	"log"
-	"net/http"
 	"sync"
 	"time"
 
@@ -76,18 +74,4 @@ func HackerNews(client client.IHttpClient, value int) {
 	var article Article
 	resp.To(&article)
 	fmt.Printf("Hacker news article contains title, %s and text, %s - current score is %d", article.Title, article.Text, article.Score)
-}
-
-func defaultHttpRequest() {
-
-	resp, err := http.Get("https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty")
-
-	if err != nil {
-		panic(err)
-	}
-
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-
-	fmt.Println(body)
 }
