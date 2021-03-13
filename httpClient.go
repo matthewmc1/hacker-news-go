@@ -21,7 +21,7 @@ type Article struct {
 	Type  string
 }
 
-func main() {
+func Client() {
 
 	httpClient := client.New("https://hacker-news.firebaseio.com/")
 	request, err := httpClient.Get("v0/topstories.json")
