@@ -43,7 +43,7 @@ func main() {
 		for _, story := range resp.Get().Body {
 			wg.Add(1) // add one to wait group every time we enter the loop and wait will wait for all these to edn
 
-			go func(x int) { //doing this for multi-threading to do most of the requests in parrallel - MIT 6.824 recommendation
+			go func(x int) { //doing this for multi-threading to do most of the requests in parallel - MIT 6.824 recommendation
 				HackerNews(httpClient, x)
 				wg.Done()
 			}(int(story)) //assignment to inner function from story to x value if we didn't do this we would pass in an incorrect value
